@@ -1,4 +1,5 @@
-import * as React from 'react';
+//import * as React from 'react';
+import { useEffect, useState } from "react";
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -14,14 +15,41 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Info() {
+
+  const [globalData, setGlobalData] = useState();
+  useEffect(()=>{
+    async function getData(){
+  const respon = await fetch('https://covid19.mathdro.id/api');
+  let aPiData = await respon.json();
+  console.log(aPiData) 
+  console.log(aPiData.deaths.value) 
+  setGlobalData(aPiData)
+    }
+    getData()
+  },[])
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {Array.from(Array(2)).map((_, index) => (
-          <Grid xs={2} sm={4} md={4} key={index}>
-            <Item>xs=2</Item>
+        {/* {Array.from(Array(5)).map((_, index) => ( */}
+          <Grid xs={2} sm={4} md={4} >
+            <Item><h1>
+          confirmed: {globalData?.confirmed?.value}
+        </h1></Item>
+
+        <Item><h1>
+          deaths: {globalData?.deaths?.value}
+        </h1></Item>
+        <Item><h1>
+          deaths: {globalData?.recovered?.value}
+        </h1></Item>
+        <Item><h1>
+        lastUpdate : {globalData?.lastUpdate}
+        </h1></Item>
+
           </Grid>
-        ))}
+        {/* ))}; */}
+        
       </Grid>
     </Box>
   );

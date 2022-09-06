@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -55,7 +55,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchAppBar() {
 
 
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -71,13 +70,14 @@ export default function SearchAppBar() {
           </Typography>
           <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon  />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+        
         </Toolbar>
       </AppBar>
     </Box>
