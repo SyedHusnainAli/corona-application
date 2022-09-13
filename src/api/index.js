@@ -15,11 +15,9 @@ try {
 
     return {confirmed, recovered, deaths, lastUpdate};
 } catch (error) {
-    alert('chl')
+    alert('Error')
 }
 }
 
-//{confirmed, recovered, deaths, lastUpdata}
-// {confirmed, recovered, deaths, lastUpdata}
 
 
